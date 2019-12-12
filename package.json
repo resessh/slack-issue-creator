@@ -1,0 +1,24 @@
+{
+  "name": "slack-issue-creator",
+  "version": "1.0.0",
+  "description": "Create Github issue with slack post.",
+  "main": "index.js",
+  "author": "resessh <info@resessh.net>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "NODE_OPTIONS='--require dotenv/config' ts-node-dev ./src/index.ts",
+    "build": "tsc ./src/index.ts --outDir ./dist",
+    "start": "node ./dist/index.js"
+  },
+  "dependencies": {
+    "@octokit/rest": "^16.35.0",
+    "@slack/bolt": "^1.4.1"
+  },
+  "devDependencies": {
+    "@types/node": "^12.12.17",
+    "dotenv": "^8.2.0",
+    "ts-node-dev": "^1.0.0-pre.44",
+    "typescript": "^3.7.3"
+  }
+}
