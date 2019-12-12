@@ -1,9 +1,11 @@
 import { App, MessageAction } from '@slack/bolt';
 import { octokit } from './apis';
 import {
+  ACTION_ID,
   CALLBACK_ID,
   onCreateGithubIssueAction,
   onSubmitGithubIssueView,
+  onRequestRepositoryList,
 } from './controllers/createGithubIssue';
 
 if (!process.env.SLACK_SIGNING_SECRET) {
@@ -28,13 +30,19 @@ export const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
 });
 
-// モーダル出すやつ
+// ====================
+// Github Issue Creator
+// ====================
+
+//モーダル出すやつ
 app.action<MessageAction>(
   { callback_id: CALLBACK_ID.CREATE_GITHUB_ISSUE_ACTION },
   onCreateGithubIssueAction
 );
 // モーダルの値受け取るやつ
 app.view(CALLBACK_ID.CREATE_GITHUB_ISSUE_VIEW, onSubmitGithubIssueView);
+// モーダルのリポジトリ一覧を返すやつ
+app.options(ACTION_ID.REPO_NAME, onRequestRepositoryList);
 
 // health check
 // @ts-ignore
