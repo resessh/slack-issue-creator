@@ -13,4 +13,4 @@ RUN yarn build
 ENV PORT 80
 
 EXPOSE 80
-CMD ["node", "./dist/index.js"]
+CMD ["yarn", "start"]

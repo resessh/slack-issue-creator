@@ -27,6 +27,7 @@ const octokit = new Octokit({
   auth: process.env.GITHUB_BOT_TOKEN,
 });
 
+// モーダル出すやつ
 app.action<MessageAction>(
   { callback_id: 'create_github_issue' },
   async ({ ack, say, payload, context }) => {
@@ -128,6 +129,7 @@ app.action<MessageAction>(
   }
 );
 
+// モーダルの値受け取るやつ
 app.view('create_github_issue_modal', async ({ ack, body, view, context }) => {
   ack();
   const { channel, thread_ts, messagePermalink } = JSON.parse(
@@ -150,6 +152,12 @@ app.view('create_github_issue_modal', async ({ ack, body, view, context }) => {
     text: `issueを作成しました ${issue.data.html_url}`,
     thread_ts,
   });
+});
+
+// health check
+// @ts-ignore
+app.receiver.app.get('/h', (req, res) => {
+  res.sendStatus(200);
 });
 
 (async () => {

@@ -1,5 +1,7 @@
-# slack-issue-creator
-slackメッセージからgithub issueをつくるやつ。
+# slack-bot
+
+## できること
+- slackメッセージからgithub issueをつくる
 
 ## slack側の設定
 1. appを作る
