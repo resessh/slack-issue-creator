@@ -8,7 +8,7 @@
   "private": true,
   "scripts": {
     "dev": "NODE_OPTIONS='--require dotenv/config' ts-node-dev ./src/index.ts",
-    "build": "tsc ./src/index.ts --outDir ./dist",
+    "build": "tsc",
     "start": "node ./dist/index.js"
   },
   "dependencies": {

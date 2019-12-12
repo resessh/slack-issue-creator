@@ -154,4 +154,5 @@ app.view('create_github_issue_modal', async ({ ack, body, view, context }) => {
 
 (async () => {
   await app.start(process.env.PORT || 3000);
+  console.log('⚡ process launched.');
 })();
